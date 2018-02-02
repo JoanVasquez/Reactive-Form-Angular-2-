@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Simple reactive form - Angular 2+</h2>
+  </div>
+  <div class="card-block" class="p-3">
+    <form novalidate [formGroup]="book" (ngSubmit)="onValidate()">
+      <fieldset>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Name of the book..." />
+          <div class="alert alert-danger" role="alert" *ngIf="book.get('name').invalid && book.get('name').touched">
+            <span *ngIf="book.get('name').hasError('required')">A name is required</span>
+            <span *ngIf="book.get('name').hasError('minlength')">A min of 3 characters are required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Code</label>
+          <input type="text" class="form-control" formControlName="code" placeholder="Code of the book..." />
+          <div class="alert alert-danger" role="alert" *ngIf="book.get('code').invalid && book.get('code').touched">
+            <span *ngIf="book.get('code').hasError('required')">A code is required</span>
+            <span *ngIf="book.get('code').hasError('minlength')">A min of 3 characters are required</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Author</label>
+          <input type="text" class="form-control" formControlName="author" placeholder="Author of the book..." />
+          <div class="alert alert-danger" role="alert" *ngIf="book.get('author').invalid && book.get('author').touched">
+            <span *ngIf="book.get('author').hasError('required')">A author is required</span>
+            <span *ngIf="book.get('author').hasError('minlength')">A min of 3 characters are required</span>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="book.invalid">Validate</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
